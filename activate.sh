@@ -11,3 +11,7 @@ cd grover
 
 # Begin bootstrap process
 python3 ${GPTME_PATH}/bootstrap.py
+
+# Note:
+# :%s#\\n#^M#g
+# %s#\\"#"#g
