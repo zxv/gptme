@@ -2,6 +2,8 @@
 CONTENT_PATH=/content
 GPTME_PATH="${CONTENT_PATH}/gptme"
 
+ln -s ${CONTENT_PATH} ~/content -f
+
 # Install dependencies
 python3 -m pip install regex jsonlines
 python3 -m pip install -U tqdm
