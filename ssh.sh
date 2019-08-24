@@ -14,4 +14,4 @@ echo "LD_LIBRARY_PATH=/usr/lib64-nvidia" >> /root/.bashrc && echo "export LD_LIB
 ssh -o "StrictHostKeyChecking no" -R $alias:22:localhost:22 serveo.net &
 
 echo "Use the following command to connect to the SSH server:"
-echo "sshpass -p ${password} ssh -o "StrictHostKeyChecking no" -J serveo.net root@${alias}"
+echo "sshpass -p ${password} ssh -o \"StrictHostKeyChecking no\" -J serveo.net root@${alias}"
