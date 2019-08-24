@@ -27,10 +27,10 @@ def weight_files():
     for ext, id_ in zip(local_filenames, local_file_ids):
         ext = str(NUMBER) + ext
         filename = "%s/%s/model.ckpt.%s" % (MODEL_PATH, MODEL_TYPE, ext)
-        yield filename, id_
+        yield filename, id_, ext
 
 
-def get_file(filename, id_):
+def get_file(filename, id_, ext):
     auth.authenticate_user()
     drive_service = build("drive", "v3")
 
@@ -51,8 +51,8 @@ def get_file(filename, id_):
 
 
 def get_weights():
-    for filename, id_ in weight_files():
-        get_file(filename, id_)
+    for filename, id_, ext in weight_files():
+        get_file(filename, id_, ext)
 
 
 if __name__ == "__main__":
