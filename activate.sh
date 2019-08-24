@@ -14,4 +14,5 @@ python3 ${GPTME_PATH}/bootstrap.py
 
 # Note:
 # :%s#\\n#^M#g
-# %s#\\"#"#g
+# :%s#\\"#"#g
+# :%s#\\'#\'#g
