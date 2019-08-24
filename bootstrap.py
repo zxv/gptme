@@ -30,29 +30,32 @@ def weight_files():
         yield filename, id_, ext
 
 
-def get_file(filename, id_, ext):
-    auth.authenticate_user()
-    drive_service = build("drive", "v3")
+def write_file(filename, id_, ext, overwrite=False):
+    if not overwrite and not os.path.exists(filename):
+        auth.authenticate_user()
+        drive_service = build("drive", "v3")
 
-    request = drive_service.files().get_media(fileId=id_)
-    with open(filename, "wb") as f:
-        downloader = MediaIoBaseDownload(f, request, chunksize=100 * 1024 * 1024)
-        done = False
-        pbar = tqdm(total=100, desc="%s" % ext)
-        progress = 0
-        while done is False:
-            status, done = downloader.next_chunk()
-            new_progress = int(status.progress() * 100)
-            pbar.update(new_progress - progress)
-            progress = new_progress
+        request = drive_service.files().get_media(fileId=id_)
+        with open(filename, "wb") as f:
+            downloader = MediaIoBaseDownload(f, request, chunksize=100 * 1024 * 1024)
+            done = False
+            pbar = tqdm(total=100, desc="%s" % ext)
+            progress = 0
+            while done is False:
+                status, done = downloader.next_chunk()
+                new_progress = int(status.progress() * 100)
+                pbar.update(new_progress - progress)
+                progress = new_progress
 
-        pbar.close()
-    print("Downloaded %s" % filename)
+            pbar.close()
+        print("Downloaded %s" % filename)
+    else:
+        print("{} already exists! Skipping.".format(filename))
 
 
 def get_weights():
     for filename, id_, ext in weight_files():
-        get_file(filename, id_, ext)
+        write_file(filename, id_, ext)
 
 
 if __name__ == "__main__":
