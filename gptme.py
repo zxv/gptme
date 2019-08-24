@@ -4,6 +4,7 @@ import sys
 
 DESCRIPTION = "A tool to interact with the opengpt-2 machine learning model"
 
+
 def parse_args():
     parser = ArgumentParser(prog=("gptme"), description=DESCRIPTION)
     args = parser.parse_args()
@@ -13,5 +14,6 @@ def parse_args():
 
     return args
 
-if __name__ == '__main__':
-  args = parse_args()
+
+if __name__ == "__main__":
+    args = parse_args()
