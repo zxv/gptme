@@ -7,12 +7,12 @@ from tqdm.auto import tqdm
 
 NUMBER = 800000
 MODEL = "grover_mega_owt_fix"
+MODEL_TYPE = "mega"
+MODEL_PATH = "/content/grover/models"
 
 
 def make_path():
-    model_type = "mega"
-    model_path = "/content/grover/models"
-    model_dir = os.path.join(model_path, model_type)
+    model_dir = os.path.join(MODEL_PATH, MODEL_TYPE)
     if not os.path.exists(model_dir):
         os.makedirs(model_dir)
 
@@ -26,7 +26,7 @@ def weight_files():
     ]
     for ext, id_ in zip(local_filenames, local_file_ids):
         ext = str(NUMBER) + ext
-        filename = "%s/%s/model.ckpt.%s" % (model_path, model_type, ext)
+        filename = "%s/%s/model.ckpt.%s" % (MODEL_PATH, MODEL_TYPE, ext)
         yield filename, id_
 
 
