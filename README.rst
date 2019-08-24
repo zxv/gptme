@@ -7,7 +7,7 @@ Directions
 1. Create yourself a new Google Colaboratory notebook by following this
    link: https://colab.research.google.com/notebook#create=true&language=python3
 2. In the top menu, go to [Runtime > Change Runtime Type] and change
-	 the hardware accelerator to GPU.
+   the hardware accelerator to GPU.
 3. Paste in the following to the text cell's text field (next to the
    play button)::
        !git clone https://github.com/zxv/gptme && . /gptme/activate.sh
